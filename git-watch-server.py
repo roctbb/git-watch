@@ -4,7 +4,7 @@ from config import *
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def process():
     print(request.headers)
     print(request.data)
