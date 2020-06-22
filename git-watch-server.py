@@ -11,12 +11,12 @@ def process():
     token = request.headers.get('X-Gitlab-Token')
 
     if token != TOKEN:
-        print("wrong token")
+        print("wrong token", request.headers)
         return "TOKEN"
     try:
         if event['object_kind'] == 'push':
             repository = event['repository']['name']
-            os.system('./scripts/{}'.format(SCRIPTS[repository]))
+            os.system('{}/scripts/{}'.format(PATH, SCRIPTS[repository]))
     except Exception as e:
        print(e)
 
