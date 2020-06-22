@@ -26,7 +26,7 @@ def process():
     try:
         if event['object_kind'] == 'push':
             repository = event['repository']['name']
-            delayed(60, update, [repository])
+            delayed(5, update, [repository])
     except Exception as e:
        print(e)
 
