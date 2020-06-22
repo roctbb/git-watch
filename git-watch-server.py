@@ -8,6 +8,11 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def process():
     event = request.json
+    token = request.headers.get('X-Gitlab-Token')
+
+    if token != TOKEN:
+        print("wrong token")
+        return "TOKEN"
     try:
         if event['object_kind'] == 'push':
             repository = event['repository']['name']
